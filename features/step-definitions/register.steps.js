@@ -1,26 +1,34 @@
 import { Then } from '@wdio/cucumber-framework';
+import RegisterPage from '../pageobjects/register.page.js';
+const registerPage = new RegisterPage();
+    
 
 Then("I enter email address", async function() {
-    console.log("Step - I enter email address")
+    await registerPage.inputEmail.waitForDisplayed();
+    await registerPage.inputEmail.setValue("arc1@mailinator.com");
 })
 
 Then(/^I enter password$/, async function() {
-    console.log("Step - I enter password")
+    await registerPage.inputPassword.waitForDisplayed();
+    await registerPage.inputPassword.setValue("123456");
 })
 
 Then(/^I enter password repeatedly$/, async function() {
-    console.log("Step - I enter password repeatedly")
+    await registerPage.inputPasswordConfirmm.waitForDisplayed();
+    await registerPage.inputPasswordConfirmm.setValue("123456");
 })
 
 Then(/^I select a question about elder sibling$/, async function() {
-    console.log("Step - I select a question about elder sibling")
+    await registerPage.selectSecurityQuestion("Your eldest siblings middle name?");
 })
 
 Then(/^I write answer$/, async function() {
-    console.log("Step - I write answer")
+    await registerPage.inputAnswer.waitForDisplayed();
+    await registerPage.inputAnswer.setValue("TestAnswer");
 })
 
 Then(/^I press register button$/, async function() {
-    console.log("Step - I press register button")
+    await registerPage.buttonRegister.waitForDisplayed();
+    await registerPage.buttonRegister.click();
 })
     
