@@ -38,4 +38,9 @@ Then(/^I press not yet a customer$/, async function() {
 Then(/^I open basket page$/, async function() {
     console.log("Step - I press not yet a customer")
 })
+
+Then(/^I open side menu$/, async function() {
+    await basePage.buttonBurgerMenu.waitForDisplayed();
+    await basePage.buttonBurgerMenu.click();
+})
  
