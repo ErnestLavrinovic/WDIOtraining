@@ -1,13 +1,11 @@
-import BasePage from './base.page.js';
-
-export default class RegisterPage extends BasePage {
-    constructor(){
+import BasePage from "./base.page.js";
+export default class RegisterPage extends BasePage{
+    constructor() {
         super();
-        //empty constructor
     }
 
-    get title(){
-        return browser.$('//h1[text()="Register"]=Register');
+    get title() {
+        return browser.$('//h1[text()="User Registration"]');
     }
 
     get inputEmail(){
@@ -18,7 +16,7 @@ export default class RegisterPage extends BasePage {
         return browser.$('#passwordControl');
     }
 
-    get inputPasswordConfirmm(){
+    get inputPasswordConfirm(){
         return browser.$('#repeatPasswordControl');
     }
 
@@ -26,8 +24,12 @@ export default class RegisterPage extends BasePage {
         return browser.$('span.mdc-switch__track');
     }
 
-    async selectSecurityQuestion(option){
-        return browser.$(`//span[@class="mdc-list-item__primary-text"][normalize-space(text())="Your eldest siblings middle name?"] = "${option}"`);
+    get selectSecurityQuestion(){
+        return browser.$('[name="securityQuestion"]');
+    }
+
+    async securityQuestionOption(option){
+        return browser.$(`//span[@class="mdc-list-item__primary-text"][normalize-space(text()) = "${option}"]`);
     }
 
     get inputAnswer(){
@@ -38,7 +40,7 @@ export default class RegisterPage extends BasePage {
         return browser.$('button#registerButton');
     }
 
-    get linkToLogin(){
+    get linkLogin(){
         return browser.$('[routerlink="/login"]');
     }
 }

@@ -1,38 +1,37 @@
 import { Then } from '@wdio/cucumber-framework';
-import BasePage from '../pageobjects/base.page.js';
+import BasePage from "../pageobjects/base.page.js"
 import LoginPage from '../pageobjects/login.page.js';
+import ComnplaintPage from '../pageobjects/complaint.page.js';
 const basePage = new BasePage();
 const loginPage = new LoginPage();
+const complaintPage = new ComnplaintPage
 
 Then(/^I open landing page$/, async function() {
-    await browser.url("");
-    await basePage.buttonDismissWelcome.waitForDisplayed();
-    await basePage.buttonDismissWelcome.click();
+    await browser.url('');
+    await basePage.buttonCloseWelcomeBanner.waitForDisplayed();
+    await basePage.buttonCloseWelcomeBanner.click();
     await basePage.buttonDismissCookies.waitForDisplayed();
     await basePage.buttonDismissCookies.click();
-    await basePage.snackBarLanguageChange.waitForExist({reverse : true});
-
-    console.log("Step - I open landing page")
+    await basePage.snackBarLanguageChange.waitForExist({ reverse: true });
 })
 
-
-Then(/^I press on Account button$/, async function (){
+Then(/^I press on Account button$/, async function() {
     await basePage.buttonAccount.waitForDisplayed();
     await basePage.buttonAccount.click();
 })
 
-Then(/^I press on login button$/, async function (){
-    await basePage.buttonLogin.waitForDisplayed();
-    await basePage.buttonLogin.click();
+Then(/^I press on login button$/, async function() {
+    await basePage.buttonAccount.waitForDisplayed();
+    await basePage.buttonAccount.click();
 })
-
 
 Then(/^I am on login page$/, async function() {
     await loginPage.waitForLoad();
 })
 
 Then(/^I press not yet a customer$/, async function() {
-    console.log("Step - I press not yet a customer")
+    await loginPage.linkRegister.waitForDisplayed();
+    await loginPage.linkRegister.click();
 })
  
 Then(/^I open basket page$/, async function() {
@@ -43,4 +42,12 @@ Then(/^I open side menu$/, async function() {
     await basePage.buttonBurgerMenu.waitForDisplayed();
     await basePage.buttonBurgerMenu.click();
 })
- 
+
+Then(/^I open "Complaint" side menu option$/, async function() {
+    await basePage.sideMenu.sideMenuOption.waitForDisplayed();
+    await basePage.sideMenu.sideMenuOption.click();
+})
+
+Then(/^I am on "Complaint" page$/, async function() {
+    await complaintPage.waitForLoad();
+})

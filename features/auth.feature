@@ -11,7 +11,8 @@ Scenario: Login
     And I enter login password
     And I confirm login
     Then I am logged in
-    And I wait for 5 seconds
+    And I press on Account button
+    And I see Go to profile button contains login email
 
 @register @auth
 Scenario: Register a new user

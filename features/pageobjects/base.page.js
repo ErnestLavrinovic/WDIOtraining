@@ -2,38 +2,43 @@
 * main page object containing all methods, selectors and functionality
 * that is shared across all page objects
 */
-import SideMenu from './side.menu.js';
-export default class Page {
+
+import SideMenu from "./side.menu.js"
+
+export default class BasePage {
     constructor() {
         this.sideMenu = new SideMenu();
     }
 
     get buttonAccount() {
-        return browser.$(`#navbarAccount`)
-        // xpath - //button[@id="navbarAccount"]
+        return browser.$('#navbarAccount');
+        ////button[@id="navbarAccount"]
     }
 
     get buttonBasket() {
-        return browser.$(`[routerlink="/basket"]`)
+        return browser.$('[routerlink="/basket"]');
+        //button[@routerlink="/basket"]
     }
 
     get buttonLogin() {
-        return browser.$(`#navbarLoginButton`)
+        return browser.$('#navbarLoginButton');
+        //button[@id="navbarLoginButton"]
     }
 
     get buttonBurgerMenu() {
-        return browser.$(`//button[@aria-label="Open Sidenav"]`)
+        //button[@aria-label="Open Sidenav"]
+        return browser.$('[aria-label="Open Sidenav"]');
+    }
+
+    get buttonCloseWelcomeBanner() {
+        return browser.$('[aria-label="Close Welcome Banner"]')
     }
 
     get buttonDismissCookies() {
-        return browser.$(`[aria-label="dismiss cookie message"]`)
-    }
-
-    get buttonDismissWelcome() {
-        return browser.$(`[aria-label="Close Welcome Banner"]`)
+        return browser.$('[aria-label="dismiss cookie message"]');
     }
 
     get snackBarLanguageChange() {
-        return browser.$('.mat-mdc-snack-bar-label.mdc-snackbar__label')
+        return browser.$('.mat-mdc-snack-bar-label.mdc-snackbar__label');
     }
 }

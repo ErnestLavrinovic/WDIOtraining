@@ -1,13 +1,13 @@
-import BasePage from './base.page.js';
-
-export default class LoginPage extends BasePage{
-    constructor(){
+import BasePage from "./base.page.js"
+export default class LoginPage extends BasePage {
+    constructor() {
         super();
     }
 
     get title() {
-        return browser.$('// h1[text()="Login"]=Login');
+        return browser.$('//h1[text()="Login"]');
     }
+
     get inputEmail() {
         return browser.$('#email');
     }
@@ -16,11 +16,15 @@ export default class LoginPage extends BasePage{
         return browser.$('#password');
     }
 
+    get buttonLogin() {
+        return browser.$('button#loginButton');
+    }
+
     get linkForgotPassword() {
         return browser.$('.primary-link.forgot-pw');
     }
 
-    get checkboxRememberMe() {
+    get checkboxLabelRememberMe() {
         return browser.$('[for="rememberMe-input"]');
     }
 
@@ -28,17 +32,12 @@ export default class LoginPage extends BasePage{
         return browser.$('[routerlink="/register"]');
     }
 
-    async waitForLoad(){
+    async waitForLoad() {
         await this.title.waitForDisplayed();
         await this.inputEmail.waitForDisplayed();
         await this.inputPassword.waitForDisplayed();
         await this.linkForgotPassword.waitForDisplayed();
-        await this.checkboxRememberMe.waitForDisplayed();
+        await this.checkboxLabelRememberMe.waitForDisplayed();
         await this.linkRegister.waitForDisplayed();
     }
-
-    get buttonLogin() {
-        return browser.$('#loginButton');
-    }
-
 }
